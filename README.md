@@ -43,4 +43,20 @@
     webpack-dev-server  
     或者  
     npm run dev
+
+
+> 文档
+
+[官方中文文档](https://www.webpackjs.com/concepts/)
     
+> 插件库源码地址
+  
+[插件源码 - github](https://github.com/webpack-contrib)
+
+[插件文档 - webpackjs](https://www.webpackjs.com/plugins/)
+
+> loader
+
+[文档 - webpackjs](https://www.webpackjs.com/loaders/)
+
+
