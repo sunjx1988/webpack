@@ -23,7 +23,14 @@
 - 安装 style-loader \ css-loader
     -
     npm i style-loader css-loader --save-dev    
-     
+    
+- 安装 extract-text-webpack-plugin 注意： webpack 4 不要使用，会报错  
+    -
+    npm i -D extract-text-webpack-plugin postcss-loader less-loader sass-loader 
+
+- 安装 mini-css-extract-plugin
+    -
+    npm i -D mini-css-extract-plugin node-sass postcss-loader less-loader sass-loader autoprefixer
 
 - 打包命令
     -

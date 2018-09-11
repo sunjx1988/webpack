@@ -3,6 +3,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');   //引入html-webpack-plugin
 const CleanWebpackPlugin = require('clean-webpack-plugin'); //引入打包时清除指定目录
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const devMode = process.env.NODE_ENV == 'development';
+
 module.exports = {
 
     // mode: 'production',         //development开发模式
@@ -16,14 +19,23 @@ module.exports = {
         path: path.join(__dirname, "dist")      //输出文件路径
     },
 
-    module: {                                   // 处理对应模块
+    // 处理对应模块
+    module: {
         rules: [
-            { test: /\.css$/, use: ['style-loader', 'css-loader']},
-            { test: /\.txt$/, use: ['raw-loader']}
+            // 导入css到style标签
+            // { test: /\.css$/, use: ['style-loader', 'css-loader']},
+            // 导入文本文件
+            { test: /\.txt$/i, use: ['raw-loader']},
+            { test: /\.(sa|sc|c)ss$/, use: [ devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']}
         ]
     },
 
-    plugins: [// 对应的插件
+    // 对应的插件
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+        }),
         new HtmlWebpackPlugin({         //配置
             filename: 'index.html',     //输出文件名
             template: './public/index.html',//以当前目录下的index.html文件为模板生成dist/index.html文件
@@ -38,7 +50,7 @@ module.exports = {
                 commons: {              // 抽离自己写的公共代码
                     chunks: "initial",
                     name: "common",     // 打包后的文件名，任意命名
-                    minChunks: 2,       //最小引用2次
+                    minChunks: 2,       // 最小引用2次
                     minSize: 0          // 只要超出0字节就生成一个新包
                 },
                 vendor: {                   // 抽离第三方插件
