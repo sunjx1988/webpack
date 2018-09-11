@@ -1,0 +1,22 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunjx1988/webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunjx1988/webpack/issues"
+  },
+  "homepage": "https://github.com/sunjx1988/webpack#readme",
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
+  }
+}
