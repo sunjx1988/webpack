@@ -19,14 +19,21 @@
 - 安装 clean-webpack-plugin
     -
     npm install clean-webpack-plugin --save-dev
+    
+- 安装 style-loader \ css-loader
+    -
+    npm i style-loader css-loader --save-dev    
+     
 
 - 打包命令
     -
-    webpack --mode development
+    webpack --mode development  
+    或者  
+    npm run build
     
 - 运行
     -
-    webpack-dev-server
-    或者
+    webpack-dev-server  
+    或者  
     npm run dev
     

@@ -1,6 +1,6 @@
 const a ={
-    log: function (){
-        console.log("aaaa");
+    log: function (word){
+        console.log(word);
     }
 };
 export default a;
