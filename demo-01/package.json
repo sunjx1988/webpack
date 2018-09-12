@@ -12,7 +12,7 @@
       "browser": true,
       "node": true
     }
-  }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sunjx1988/webpack-demo.git"
