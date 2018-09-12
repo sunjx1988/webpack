@@ -59,4 +59,22 @@
 
 [文档 - webpackjs](https://www.webpackjs.com/loaders/)
 
+> 安装eslint 语法检查
+
+`
+npm install eslint eslint-config-enough babel-eslint eslint-loader --save-dev
+`
+
+package.json
+`
+{
+  "eslintConfig": {
+    "extends": "enough",
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  }
+}
+`
 
