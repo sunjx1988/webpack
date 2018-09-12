@@ -1,5 +1,9 @@
 # webpack
 
+> 参考文档      
+
+[webpack4.x 入门一篇足矣](https://juejin.im/post/5b2b9a00e51d45587b48075e)
+
 - 安装 webpack
     -
     npm install webpack --save-dev
@@ -43,11 +47,6 @@
     webpack-dev-server  
     或者  
     npm run dev
-
-
-> 文档
-
-[官方中文文档](https://www.webpackjs.com/concepts/)
     
 > 插件库源码地址
   
