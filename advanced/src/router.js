@@ -1,38 +1,35 @@
-import foo from "./views/foo";
-import bar from "./views/bar";
+// 将async/await转换成ES5代码后需要这个运行时库来支持
+import "regenerator-runtime/runtime";
 
-const routers = {
-    "/foo": foo,
-    "/bar": bar
+const routes = {
+	// import()返回promise
+	"/foo": () => require("./views/foo"),
+	"/bar.do": () => require("./views/bar.do")
 };
 
 class Router {
-    start() {
-        window.addEventListener("", () => {
-            // 点击浏览器后退 / 前进按钮时会触发 window.onpopstate 事件，我们在这时切换到相应页面
-            this.load(location.pathname);
-        });
+	start() {
+		window.addEventListener("popstate", () => {
+			this.load(location.pathname);
+		});
 
-        this.load(location.pathname);
-    }
+		this.load(location.pathname);
+	}
 
-    // 加载 path 路径的页面
-    load(path) {
-        // 首页
-        if (path === "/") {
-            path = "/foo";
-        }
-        // 创建页面实例
-        const view = new routers[path]();
-        // 调用页面方法，把页面加载到 document.body 中
-        view.mount(document.body);
-    }
+	go(path) {
+		history.pushState({}, "", path);
+		this.load(path);
+	}
 
-    // 前往 path，变更地址栏 URL，并加载相应页面
-    go(path) {
-        history.pushState({}, "", path);
-        this.load(path);
-    }
+	// 加载path路径的页面
+	// 使用async/await语法
+	async load(path) {
+		if (path === "/") path = "/foo";
+		// 动态加载页面
+		const View = (await routes[path]()).default;
+		const view = new View();
+		view.mount(document.body);
+	}
 }
 
 export default new Router();
